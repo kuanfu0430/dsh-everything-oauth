@@ -12,13 +12,13 @@
     "grok",
     "opencode"
   ],
-  "homepage": "https://github.com/kam74515-boop/dsh-everything-oauth#readme",
+  "homepage": "https://github.com/kuanfu0430/dsh-everything-oauth#readme",
   "bugs": {
-    "url": "https://github.com/kam74515-boop/dsh-everything-oauth/issues"
+    "url": "https://github.com/kuanfu0430/dsh-everything-oauth/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kam74515-boop/dsh-everything-oauth.git"
+    "url": "git+https://github.com/kuanfu0430/dsh-everything-oauth.git"
   },
   "type": "module",
   "main": "lib/index.js",
@@ -35,7 +35,6 @@
   },
   "scripts": {
     "build": "tsdown && node scripts/wrap-client.mjs",
-    "prepare": "node scripts/prepare.mjs",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.client.json",
     "check": "npm run typecheck && npm run test && npm run build"
