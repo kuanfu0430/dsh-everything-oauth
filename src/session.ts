@@ -22,6 +22,10 @@ import {
 import { EverythingOAuthStore, type StoredRoute, everythingOAuthPath } from './store.ts'
 import { catalogModelIds, catalogProvider, customProvider, officialRuntimeProvider } from './providers.ts'
 
+const MAX_REQUEST_IMAGE_BYTES = 20 * 1024 * 1024
+const REQUEST_IMAGE_PIXEL_BUDGET = 2048 * 2048
+const REQUEST_IMAGE_MAX_BYTES = 1024 * 1024
+
 export interface PlatformStatus {
   id: string
   route: string
@@ -198,6 +202,11 @@ export class EverythingOAuthSession {
         provider: route,
         displayName,
         streamIdleTimeoutMs: STREAM_IDLE_TIMEOUT_MS,
+        // Direct profiles bypass llm-pi-ai's settings resolver, so keep every
+        // request-image limit explicit and aligned with the DSH defaults.
+        maxRequestImageBytes: MAX_REQUEST_IMAGE_BYTES,
+        requestImagePixelBudget: REQUEST_IMAGE_PIXEL_BUDGET,
+        requestImageMaxBytes: REQUEST_IMAGE_MAX_BYTES,
         retryPolicy,
         configuredMaxTokens: new Map(),
         piProvider: provider,
